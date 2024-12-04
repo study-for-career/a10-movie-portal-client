@@ -24,7 +24,9 @@ const Navbar = () => {
     return (
         <div className="flex justify-between items-center bg-gray-800 text-white">
             <div>
-                <a className="btn btn-ghost uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
+                <Link to='/'>
+                    <a className="btn btn-ghost uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
+                </Link>
             </div>
             <div className="flex items-center gap-4">
                 <div className="block lg:hidden">

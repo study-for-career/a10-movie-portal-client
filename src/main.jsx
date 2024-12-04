@@ -8,13 +8,14 @@ import {
 } from "react-router-dom";
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
-    children:[
+    children: [
       {
         path: ''
       }
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: 'register',
     element: <Register></Register>
+  },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 
