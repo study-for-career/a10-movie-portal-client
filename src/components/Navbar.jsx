@@ -10,7 +10,7 @@ const Navbar = () => {
         <li><NavLink to='/'>My Favorites</NavLink></li>
         <li><NavLink to='/'>Add Movie</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+        <li><NavLink to='/'>Register</NavLink></li>
 
     </>
 
