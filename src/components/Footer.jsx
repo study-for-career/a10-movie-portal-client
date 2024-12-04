@@ -26,9 +26,9 @@ const Footer = () => {
                     <p>Contact Us: +013246433445-74 (UK-London)</p>
                 </aside>
                 <nav className="grid-flow-col flex gap-4 md:place-self-center md:justify-self-end">
-                    <button className="text-2xl" onClick={toFacebook}><FaFacebook /></button>
-                    <Link className="text-2xl" onClick={toInstagram} ><FaInstagram /></Link>
-                    <Link className="text-2xl" onClick={toLinkedin} ><FaLinkedin /></Link>
+                    <button className="text-2xl text-pink-500" onClick={toFacebook}><FaFacebook /></button>
+                    <Link className="text-2xl text-pink-500" onClick={toInstagram} ><FaInstagram /></Link>
+                    <Link className="text-2xl text-pink-500" onClick={toLinkedin} ><FaLinkedin /></Link>
                 </nav>
             </div>
         </footer>

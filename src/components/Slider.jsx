@@ -14,7 +14,7 @@ const Slider = () => {
                         <a href="#slide2" className="btn btn-circle">❯</a>
                     </div>
                     <div className='absolute left-[18%] lg:left-[40%] md:left-[30%] bottom-4 md:bottom-[20%] '>
-                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-xl text-center text-pink-600 bg-slate-300 p-2">Experience breathtaking animation that <br></br>brings every detail to life </h1>
+                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-2xl text-center text-white stroke-pink-500 italic">Experience breathtaking animation that <br></br>brings every detail to life </h1>
                     </div>
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
@@ -26,7 +26,7 @@ const Slider = () => {
                         <a href="#slide3" className="btn btn-circle">❯</a>
                     </div>
                     <div className='absolute left-[18%] lg:left-[40%] md:left-[30%] bottom-4 md:bottom-[20%] '>
-                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-xl text-center text-pink-600 bg-slate-50 p-2">Meet a cast of lovable characters that  <br></br>will make you laugh, cry, and cheer.</h1>
+                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-xl text-center text-pink-300 italic stroke-white">Meet a cast of lovable characters that  <br></br>will make you laugh, cry, and cheer.</h1>
                     </div>
 
                 </div>
@@ -39,7 +39,7 @@ const Slider = () => {
                         <a href="#slide1" className="btn btn-circle">❯</a>
                     </div>
                     <div className='absolute left-[18%] lg:left-[40%] md:left-[30%] bottom-4 md:bottom-[20%] '>
-                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-xl text-center text-pink-600 bg-slate-300 p-2">Super animation movie <br></br>Action fun and much more. </h1>
+                        <h1 className="animate__animated animate__lightSpeedInLeft  text-sm md:text-xl text-center text-pink-200 italic">Super animation movie <br></br>Action fun and much more. </h1>
                     </div>
 
                 </div>

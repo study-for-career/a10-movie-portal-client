@@ -9,6 +9,7 @@ import {
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import AuthProvider from './private pages/AuthProvider.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
