@@ -1,11 +1,12 @@
 import { useState } from "react";
-// import UserRating from "../components/UserRating";
 import { Rating } from 'react-simple-star-rating';
 import { MultiSelect } from "react-multi-select-component";
+import { useContext } from "react";
+import { AuthContext } from "./AuthProvider";
 
 const AddMovie = () => {
-
-
+    const { user } = useContext(AuthContext)
+    const { email } = user;
     const [rating, setRating] = useState(0);
     const handleRating = (rate) => {
         setRating(rate)
@@ -76,9 +77,19 @@ const AddMovie = () => {
             return;
         }
 
-        const movieDetails = { title, duration, release, image, summary, rating, genre }
-        console.log(movieDetails)
-
+        const movieDetails = { email, title, duration, release, image, summary, rating, genre }
+        // console.log(movieDetails)
+        fetch('http://localhost:5000/movies', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(movieDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
     }
 
 
