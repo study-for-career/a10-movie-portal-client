@@ -13,7 +13,7 @@ const Navbar = () => {
         <li><NavLink to='/'>All Movies</NavLink></li>
         <li><NavLink to='/'>Categories</NavLink></li>
         <li><NavLink to='/'>My Favorites</NavLink></li>
-        <li><NavLink to='/'>Add Movie</NavLink></li>
+        <li><NavLink to='/add-movie'>Add Movie</NavLink></li>
         <li><NavLink to='/login'>Login</NavLink></li>
         <li><NavLink to='/register'>Register</NavLink></li>
 
@@ -37,10 +37,10 @@ const Navbar = () => {
     }
 
     return (
-        <div className="flex justify-between items-center bg-gray-800 text-white">
+        <div className="flex justify-between items-center bg-gray-800 text-white p-2">
             <div>
                 <Link to='/'>
-                    <a className="btn btn-ghost uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
+                    <a className="uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
                 </Link>
             </div>
             <div className="flex items-center gap-4">

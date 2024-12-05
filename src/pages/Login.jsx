@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext)
+    const { loginUser, googleLogin } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
-                
+
                 navigate('/')
             })
             .catch(err => {
@@ -27,7 +27,13 @@ const Login = () => {
 
 
     const handleGoogleLogin = () => {
-        console.log('I will do it later')
+        googleLogin()
+            .then(result => {
+                navigate('/')
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
     }
 
     const handleShowPassword = () => {

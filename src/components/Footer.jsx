@@ -15,7 +15,7 @@ const Footer = () => {
         <footer className="bg-gray-800 text-white">
             <div className="flex-col md:flex md:flex-row space-y-2  justify-between items-center p-2 md:p-4">
                 <Link to='/'>
-                    <a className="btn btn-ghost uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
+                    <a className="uppercase text-md md:text-xl">Movie <span className="text-pink-500">Portal</span></a>
                 </Link>
 
 
