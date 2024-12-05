@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
 
 const Login = () => {
-    const { loginUser, googleLogin } = useContext(AuthContext)
+    const { loginUser, googleLogin, updateUser } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
 
@@ -17,11 +17,19 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
-
+                fetch(`http://localhost:5000/users/${email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const { displayName, photoURL } = data
+                        const userInfo = { displayName, photoURL }
+                        updateUser(userInfo)
+                            .then(() => { })
+                            .catch(err => { })
+                    })
                 navigate('/')
             })
             .catch(err => {
-                console.log(err.message)
+
             })
     }
 
@@ -32,7 +40,7 @@ const Login = () => {
                 navigate('/')
             })
             .catch(err => {
-                console.log(err.message)
+
             })
     }
 

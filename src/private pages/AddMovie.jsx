@@ -62,7 +62,6 @@ const AddMovie = () => {
         }
 
         const movieDetails = { title, duration, release, image, summary, rating, genre }
-        console.log(movieDetails);
 
     }
 
@@ -151,7 +150,7 @@ const AddMovie = () => {
                     </div>
 
                     {
-                        error ? <p className="text-red-500">{error}</p> : console.log('ok')
+                        error ? <p className="text-red-500">{error}</p> : ''
                     }
 
                     <div className="form-control mt-6 md:col-span-2">

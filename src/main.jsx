@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import AuthProvider from './private pages/AuthProvider.jsx';
 import AddMovie from './private pages/AddMovie.jsx';
 import PrivateRoute from './private pages/PrivateRoute.jsx';
+import Favourites from './private pages/Favourites.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'add-movie',
         element: <AddMovie></AddMovie>
+      },
+      {
+        path: 'favourites',
+        element: <Favourites></Favourites>
       }
     ]
   },

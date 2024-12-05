@@ -6,7 +6,7 @@ import { AuthContext } from "../private pages/AuthProvider";
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleLogin, updateUser } = useContext(AuthContext);
     const navigate = useNavigate()
 
 
@@ -19,30 +19,61 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
-        const photo = e.target.image_link.value;
+        const displayName = e.target.name.value;
+        const photoURL = e.target.image_link.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        // if (!validate.test(password)) {
-        //     setError(`Must have an Uppercase, a Lowercase letter in the password and Length must be at least 6 character`);
-        //     return;
-        // }
-        console.log(email, password, name, photo)
+        const userInfo = { displayName, photoURL, email, password }
+        const validate = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if (!validate.test(password)) {
+            setError(`Must have an Uppercase, a Lowercase letter in the password and Length must be at least 6 character`);
+            return;
+        }
 
         createUser(email, password)
-            .then(result => {
+            .then(() => {
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfo)
+                }
+                )
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            alert('User Created Successfully')
+                        }
+                        fetch(`http://localhost:5000/users/${email}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                const { displayName, photoURL } = data
+                                const userInfo = { displayName, photoURL }
+                                updateUser(userInfo)
+                                    .then(() => { })
+                                    .catch(err => { })
+                            })
+                    })
+
                 navigate('/')
-                console.log(result.user)
+
             })
             .catch(err => {
-                console.log(err.message)
+                setError(err.message)
             })
     }
 
 
     const handleGoogleLogin = () => {
-        console.log('I will do it later')
+        googleLogin()
+            .then(result => {
+                navigate('/')
+            })
+            .catch(err => {
+
+            })
     }
 
     const handleShowPassword = () => {
