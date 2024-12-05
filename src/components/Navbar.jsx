@@ -6,7 +6,7 @@ import { AuthContext } from "../private pages/AuthProvider";
 const Navbar = () => {
 
     const { logoutUser, user } = useContext(AuthContext)
-    console.log(user)
+
 
     const menuLists = <>
         <li><NavLink to='/'>Home</NavLink></li>
