@@ -1,6 +1,7 @@
 import { useState } from "react";
 // import UserRating from "../components/UserRating";
 import { Rating } from 'react-simple-star-rating';
+import { MultiSelect } from "react-multi-select-component";
 
 const AddMovie = () => {
 
@@ -9,6 +10,17 @@ const AddMovie = () => {
     const handleRating = (rate) => {
         setRating(rate)
     }
+    const [selected, setSelected] = useState([])
+    const options = [
+        { label: "Animation", value: "Animation" },
+        { label: "Adventure", value: "Adventure" },
+        { label: "Comedy", value: "Comedy" },
+        { label: "Fantasy", value: "Fantasy" },
+        { label: "Drama", value: "Drama" },
+        { label: "Family", value: "Family" },
+        { label: "Action", value: "Action" },
+    ];
+
 
     const [error, setError] = useState('');
 
@@ -16,11 +28,14 @@ const AddMovie = () => {
         e.preventDefault()
         const form = e.target;
         const title = form.title.value;
-        const genre = form.genre.value;
+        // const genre = form.genre.value;
         const duration = parseInt(form.duration.value);
         const release = parseInt(form.release.value);
         const image = form.image.value;
         const summary = form.summary.value;
+
+        const genre = selected.map(select => select.value)
+
         setError('')
 
         if (title.length < 2) {
@@ -43,7 +58,7 @@ const AddMovie = () => {
             setError('Please select a Year');
             return;
         }
-        if (genre === 'Select a genre') {
+        if (genre.length < 1) {
             setError('Please select a Genre.');
             return;
         }
@@ -62,6 +77,7 @@ const AddMovie = () => {
         }
 
         const movieDetails = { title, duration, release, image, summary, rating, genre }
+        console.log(movieDetails)
 
     }
 
@@ -87,19 +103,18 @@ const AddMovie = () => {
                             <span className="label-text">Genre</span>
                         </label>
 
-                        <select className="select select-bordered" name="genre">
-                            <option disabled selected>Select a genre</option>
-                            <option>Star Wars</option>
-                            <option>Harry Potter</option>
-                            <option>Lord of the Rings</option>
-                            <option>Planet of the Apes</option>
-                            <option>Star Trek</option>
-                        </select>
+                        <MultiSelect
+                            options={options}
+                            value={selected}
+                            onChange={setSelected}
+                            labelledBy="Select"
+                        />
+
                     </div>
 
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Duration</span>
+                            <span className="label-text">Duration (min)</span>
                         </label>
 
                         <input type="number" name="duration" placeholder="Duration" className="input input-bordered" required />
@@ -110,12 +125,16 @@ const AddMovie = () => {
                         </label>
 
                         <select className="select select-bordered" name="release" >
-                            <option disabled selected>Select a Year</option>
-                            <option>2020</option>
+                            <option disabled defaultValue={'Select a Year'}>Select a Year</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                            <option>2022</option>
                             <option>2021</option>
-                            <option>Lord of the Rings</option>
-                            <option>Planet of the Apes</option>
-                            <option>Star Trek</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+
                         </select>
                     </div>
 
