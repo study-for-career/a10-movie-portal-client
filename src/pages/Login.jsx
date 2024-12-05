@@ -1,21 +1,24 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
+
 
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
-        loginUser()
+
+        loginUser(email, password)
             .then(result => {
-                console.log(result.user)
+                
+                navigate('/')
             })
             .catch(err => {
                 console.log(err.message)

@@ -1,7 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../private pages/AuthProvider";
 
 const Navbar = () => {
+
+    const { logoutUser, user } = useContext(AuthContext)
+    console.log(user)
 
     const menuLists = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -20,6 +25,16 @@ const Navbar = () => {
         <li><Link to='/'>My Favorites</Link></li>
         <li><Link to='/'>Add Movie</Link></li>
     </>
+
+    const handleLogout = () => {
+        logoutUser()
+            .then(() => {
+                console.log('user logout successfully')
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
 
     return (
         <div className="flex justify-between items-center bg-gray-800 text-white">
@@ -78,7 +93,7 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-auto p-2 shadow bg-gray-800 text-white">
 
-                        <li><a>Logout</a></li>
+                        <li><a onClick={handleLogout}>Logout</a></li>
                     </ul>
 
                 </div>

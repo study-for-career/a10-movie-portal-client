@@ -1,19 +1,19 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
-
+    const navigate = useNavigate()
 
 
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
 
-    const validate = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    // const validate = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
 
 
@@ -24,14 +24,15 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        if (!validate.test(password)) {
-            setError(`Must have an Uppercase, a Lowercase letter in the password and Length must be at least 6 character`);
-            return;
-        }
+        // if (!validate.test(password)) {
+        //     setError(`Must have an Uppercase, a Lowercase letter in the password and Length must be at least 6 character`);
+        //     return;
+        // }
         console.log(email, password, name, photo)
 
         createUser(email, password)
             .then(result => {
+                navigate('/')
                 console.log(result.user)
             })
             .catch(err => {
