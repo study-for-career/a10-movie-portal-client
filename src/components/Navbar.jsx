@@ -7,15 +7,13 @@ const Navbar = () => {
 
     const { logoutUser, user } = useContext(AuthContext)
 
-
     const menuLists = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/'>All Movies</NavLink></li>
         <li><NavLink to='/'>Categories</NavLink></li>
         <li><NavLink to='/'>My Favorites</NavLink></li>
         <li><NavLink to='/add-movie'>Add Movie</NavLink></li>
-        <li><NavLink to='/login'>Login</NavLink></li>
-        <li><NavLink to='/register'>Register</NavLink></li>
+
 
     </>
 
@@ -23,7 +21,7 @@ const Navbar = () => {
         <li><Link to='/'>All Movies</Link></li>
         <li><Link to='/'>Categories</Link></li>
         <li><Link to='/'>My Favorites</Link></li>
-        <li><Link to='/'>Add Movie</Link></li>
+        <li><Link to='/add-movie'>Add Movie</Link></li>
     </>
 
     const handleLogout = () => {
@@ -47,7 +45,7 @@ const Navbar = () => {
                 <div className="block lg:hidden">
                     <ul className="flex gap-4">
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/'>Login</NavLink></li>
+                        <li className={user ? 'hidden' : 'block'}><NavLink to='/login'>Login</NavLink></li>
                     </ul>
                 </div>
                 <div className="hidden lg:block">
@@ -56,7 +54,12 @@ const Navbar = () => {
                         {
                             menuLists
                         }
+
+                        <li className={user ? 'hidden' : 'block'}><NavLink to='/login'>Login</NavLink></li>
+                        <li className={user ? 'hidden' : 'block'}><NavLink to='/register'>Register</NavLink></li>
                     </ul>
+
+
                 </div>
                 {/* Dropdown for menulists */}
                 <div className="dropdown dropdown-end ">
@@ -79,20 +82,22 @@ const Navbar = () => {
                 </div>
 
                 {/* Dropdown for all devices */}
-                <div className="dropdown dropdown-end ">
+                <div className={user ? "dropdown dropdown-end " : "hidden"}>
 
                     {/* After login Area */}
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
-                        <div className="w-10 rounded-full ">
+
+                        <div className="w-10 rounded-full">
+
                             <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                alt="User Profile"
+                                src={user?.photoURL} />
                         </div>
                     </div>
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-auto p-2 shadow bg-gray-800 text-white">
-
+                        <li><title>{user?.displayName}</title></li>
                         <li><a onClick={handleLogout}>Logout</a></li>
                     </ul>
 

@@ -4,9 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import Footer from "../components/Footer";
 import NotLogged from "../components/NotLogged";
+import Loader from "../components/Loader";
 
 const PrivateRoute = () => {
-    const { user } = useContext(AuthContext)
+    const { user, loader } = useContext(AuthContext)
+    if (loader) {
+        return <Loader></Loader>
+    }
 
     return (
         <div>
