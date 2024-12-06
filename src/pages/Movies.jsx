@@ -30,7 +30,7 @@ const Movies = () => {
                             <h2 ><span className="font-bold">Rating: </span >{movie?.rating}</h2>
                             <h2 ><span className="font-bold">Genre: </span >{movie?.genre.join(',  ')}</h2>
 
-                            <Link to={`/${movie._id}`}
+                            <Link to={`/movies/${movie._id}`}
                                 className="btn bg-pink-500 hover:bg-gray-800 w-full text-white">
                                 See Details
                             </Link>
