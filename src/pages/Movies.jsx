@@ -25,7 +25,7 @@ const Movies = () => {
                                 src={movie?.image} alt={movie?.title} />
                             <h2 className="text-2xl font-bold">{movie?.title}</h2>
 
-                            <h2 ><span className="font-bold">Release Date: </span >{movie?.release}</h2>
+                            <h2 ><span className="font-bold">Release Year: </span >{movie?.release}</h2>
                             <h2 ><span className="font-bold">Movie Length: </span >{movie?.duration} min</h2>
                             <h2 ><span className="font-bold">Rating: </span >{movie?.rating}</h2>
                             <h2 ><span className="font-bold">Genre: </span >{movie?.genre.join(',  ')}</h2>

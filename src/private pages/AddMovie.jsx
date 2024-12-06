@@ -91,7 +91,7 @@ const AddMovie = () => {
         }
 
         const movieDetails = { email, title, duration, release, image, summary, rating, genre }
-        // console.log(movieDetails)
+
         fetch('http://localhost:5000/movies', {
             method: 'POST',
             headers: {
@@ -101,7 +101,6 @@ const AddMovie = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.insertedId) {
                     notify2()
                     form.reset()
