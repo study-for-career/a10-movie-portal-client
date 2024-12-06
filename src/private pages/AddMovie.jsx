@@ -61,7 +61,7 @@ const AddMovie = () => {
             return
         }
         if (summary.length < 10) {
-            setError('Summary must be greaterthan 10')
+            setError('Summary must be greater than 10')
             return
         }
         if (rating === 0) {
@@ -179,8 +179,7 @@ const AddMovie = () => {
                         <label className="label">
                             <span className="label-text">Rating</span>
                         </label>
-                        {/* <UserRating></UserRating> */}
-                        {/* <input type="number" name="release" placeholder="Release Year" className="input input-bordered" required /> */}
+
 
                         <Rating onClick={handleRating} initialValue={rating} className='inline' />
                     </div>
@@ -205,6 +204,8 @@ const AddMovie = () => {
                         <button className="btn bg-pink-500 hover:bg-pink-500 hover:text-black text-white uppercase">Add Movie</button>
                     </div>
                 </form>
+
+
             </div>
 
 

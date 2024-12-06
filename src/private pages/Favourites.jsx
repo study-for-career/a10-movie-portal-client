@@ -35,6 +35,8 @@ const Favourites = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount) {
+                    const newfavorite = favouriteMovies.filter(favorite => favorite._id !== id)
+                    setFavouriteMovie(newfavorite)
                     notify2()
                 } else {
                     notify()

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaStar } from "react-icons/fa6";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "./AuthProvider";
@@ -10,7 +10,7 @@ const MovieDetails = () => {
     const { user } = useContext(AuthContext)
     const email = user.email;
     const movieDetails = useLoaderData()
-    const { title, duration, release, image, summary, rating, genre } = movieDetails;
+    const { _id, title, duration, release, image, summary, rating, genre } = movieDetails;
 
 
     const notify = () => {
@@ -23,8 +23,19 @@ const MovieDetails = () => {
             position: "top-center"
         })
     }
+    const notifyDelete = () => {
+        toast.success("Movie Successfully Deleted", {
+            position: "top-center"
+        })
+    }
+    const notifyDeleteFailed = () => {
+        toast.error("Failed to Delete", {
+            position: "top-center"
+        })
+    }
 
     const favouriteMovieData = { email, title, duration, release, image, summary, rating, genre }
+
     const handleAddToFavourite = (favouriteMovie) => {
         fetch('http://localhost:5000/favourite_movies', {
             method: 'POST',
@@ -39,6 +50,25 @@ const MovieDetails = () => {
                     notify2()
                 } else {
                     notify()
+                }
+            })
+    }
+
+    const navigate = useNavigate()
+    const handleDeleteMovie = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/movies/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    notifyDelete()
+                    setTimeout(() => {
+                        navigate('/movies')
+                    }, 2000)
+                } else {
+                    notifyDeleteFailed()
                 }
             })
     }
@@ -58,7 +88,7 @@ const MovieDetails = () => {
                     <h2><span className=" text-xl text-pink-500">Genre: </span >{genre.join(',  ')}</h2>
                     <p><span className=" text-xl text-pink-500">Summary: </span >{summary}</p>
                     <button onClick={() => handleAddToFavourite(favouriteMovieData)} className="btn bg-pink-500 text-white hover:bg-gray-800 mr-3"> Add to Favourite</button>
-                    <button className="btn btn-error"> Delete Movie</button>
+                    <button onClick={() => handleDeleteMovie(_id)} className="btn btn-error"> Delete Movie</button>
                 </div>
                 <div className="h-60 order-1 md:order-2">
                     <img
@@ -66,6 +96,9 @@ const MovieDetails = () => {
                         src={image} alt={title} />
                 </div>
 
+            </div>
+            <div className="w-36 mx-auto py-10">
+                <Link to='/movies' className="btn uppercase bg-gray-800 text-white  hover:bg-gray-700">See all movies</Link>
             </div>
             <ToastContainer></ToastContainer>
         </div>
