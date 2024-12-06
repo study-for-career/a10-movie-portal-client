@@ -11,18 +11,6 @@ const AuthProvider = ({ children }) => {
 
     const [loader, setLoader] = useState(true)
 
-    // const userEmail = user?.email;
-    // console.log(userEmail)
-
-    // Find a specific user
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/users/${userEmail}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setUser(data)
-    //             console.log(data)
-    //         })
-    // }, [])
 
     // Create a new user
     const createUser = (email, password) => {
