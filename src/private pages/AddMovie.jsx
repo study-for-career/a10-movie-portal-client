@@ -31,13 +31,11 @@ const AddMovie = () => {
         toast.error("Failed to Add Movie", {
             position: "top-center"
         })
-
     }
     const notify2 = () => {
         toast.success("Movie Added Successfully", {
             position: "top-center"
         })
-
     }
 
     const handleAddMovie = e => {

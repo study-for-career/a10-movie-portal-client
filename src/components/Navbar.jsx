@@ -11,7 +11,7 @@ const Navbar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/movies'>All Movies</NavLink></li>
         <li><NavLink to='/'>Categories</NavLink></li>
-        <li><NavLink to='/favourites'>My Favourites</NavLink></li>
+        <li><NavLink to='/favourite_movies'>My Favourites</NavLink></li>
         <li><NavLink to='/add-movie'>Add Movie</NavLink></li>
 
 
@@ -20,7 +20,7 @@ const Navbar = () => {
     const menuListsDropdown = <>
         <li><Link to='/movies'>All Movies</Link></li>
         <li><Link to='/'>Categories</Link></li>
-        <li><Link to='/favourites'>My Favourites</Link></li>
+        <li><Link to='/favourite_movies'>My Favourites</Link></li>
         <li><Link to='/add-movie'>Add Movie</Link></li>
     </>
 

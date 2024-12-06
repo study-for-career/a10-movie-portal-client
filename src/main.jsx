@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <AddMovie></AddMovie>
       },
       {
-        path: 'favourites',
+        path: 'favourite_movies',
         element: <Favourites></Favourites>
       },
       {
