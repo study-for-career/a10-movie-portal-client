@@ -11,17 +11,24 @@ import Register from './pages/Register.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import AuthProvider from './private pages/AuthProvider.jsx';
 import AddMovie from './private pages/AddMovie.jsx';
-import PrivateRoute from './private pages/PrivateRoute.jsx';
 import Favourites from './private pages/Favourites.jsx';
+import Movies from './pages/Movies.jsx';
+import PublicRout from './routes/PublicRout.jsx';
+import PrivateRoute from './routes/PrivateRoute';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home></Home>,
+    element: <PublicRout></PublicRout>,
     children: [
       {
-        path: ''
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: 'movies',
+        element: <Movies></Movies>
       }
     ]
   },

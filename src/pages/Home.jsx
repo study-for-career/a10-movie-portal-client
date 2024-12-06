@@ -15,10 +15,10 @@ const Home = () => {
   }
   return (
     <div>
-      <Navbar></Navbar>
+
       <Slider></Slider>
-      <Outlet></Outlet>
-      <Footer></Footer>
+
+
     </div>
   );
 };
