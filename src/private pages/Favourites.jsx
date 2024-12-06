@@ -1,11 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Favourites = () => {
     const { user } = useContext(AuthContext)
     const [favouriteMovies, setFavouriteMovie] = useState([])
+
+    const notify = () => {
+        toast.error("Failed to Delete", {
+            position: "top-center"
+        })
+    }
+    const notify2 = () => {
+        toast.success("Movie Deleted Successfully", {
+            position: "top-center"
+        })
+    }
 
     useEffect(() => {
         fetch(`http://localhost:5000/favourite_movies/${user.email}`)
@@ -14,6 +25,22 @@ const Favourites = () => {
                 setFavouriteMovie(data)
             })
     }, [])
+
+    // Delete Favourite Movie
+    const handleDeleteFavourite = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/favourite_movies/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    notify2()
+                } else {
+                    notify()
+                }
+            })
+    }
 
     return (
         <div>
@@ -34,7 +61,7 @@ const Favourites = () => {
                                 <h2 ><span className="font-bold">Rating: </span >{favouriteMovie?.rating}</h2>
                                 <h2 ><span className="font-bold">Genre: </span >{favouriteMovie?.genre.join(',  ')}</h2>
 
-                                <button className="btn btn-error font-bold  ">Delete Favourite</button>
+                                <button onClick={() => handleDeleteFavourite(favouriteMovie._id)} className="btn btn-error font-bold  ">Delete Favourite</button>
                             </div>
                         })
                     }

@@ -5,3 +5,6 @@
 .star-svg {
     display: inline-block;
 }
+.active {
+    color: pink
+}
