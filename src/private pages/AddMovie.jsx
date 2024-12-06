@@ -3,6 +3,8 @@ import { Rating } from 'react-simple-star-rating';
 import { MultiSelect } from "react-multi-select-component";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddMovie = () => {
     const { user } = useContext(AuthContext)
@@ -24,6 +26,19 @@ const AddMovie = () => {
 
 
     const [error, setError] = useState('');
+
+    const notify = () => {
+        toast.error("Failed to Add Movie", {
+            position: "top-center"
+        })
+
+    }
+    const notify2 = () => {
+        toast.success("Movie Added Successfully", {
+            position: "top-center"
+        })
+
+    }
 
     const handleAddMovie = e => {
         e.preventDefault()
@@ -89,6 +104,12 @@ const AddMovie = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                if (data.insertedId) {
+                    notify2()
+                    form.reset()
+                } else {
+                    notify()
+                }
             })
     }
 
@@ -190,7 +211,7 @@ const AddMovie = () => {
             </div>
 
 
-
+            <ToastContainer></ToastContainer>
 
         </div>
     );

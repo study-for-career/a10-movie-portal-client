@@ -1,5 +1,7 @@
 
+
 const Favourites = () => {
+
     return (
         <div>
             Favourites Movies

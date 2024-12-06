@@ -63,7 +63,8 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         loader,
-        updateUser
+        updateUser,
+
     }
 
     return (

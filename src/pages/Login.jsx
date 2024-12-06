@@ -3,12 +3,26 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { loginUser, googleLogin, updateUser } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
+    const [error, setError] = useState('')
+    const notify = () => {
+        toast.error("Incorrect Email or Password", {
+            position: "top-center"
+        })
 
+    }
+    const notify2 = () => {
+        toast.success("Successfully Logged in", {
+            position: "top-center"
+        })
+
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -20,16 +34,26 @@ const Login = () => {
                 fetch(`http://localhost:5000/users/${email}`)
                     .then(res => res.json())
                     .then(data => {
+
                         const { displayName, photoURL } = data
                         const userInfo = { displayName, photoURL }
                         updateUser(userInfo)
-                            .then(() => { })
-                            .catch(err => { })
+                            .then(() => {
+
+                            })
+                            .catch(() => {
+
+                            })
                     })
-                navigate('/')
+
+                notify2()
+                setTimeout(() => {
+                    navigate('/')
+                }, 2000)
             })
             .catch(err => {
-
+                setError(err.message)
+                notify()
             })
     }
 
@@ -40,7 +64,7 @@ const Login = () => {
                 navigate('/')
             })
             .catch(err => {
-
+                notify()
             })
     }
 
@@ -98,7 +122,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

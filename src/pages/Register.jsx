@@ -3,6 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../private pages/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -13,7 +15,18 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
 
-    // const validate = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const notify = () => {
+        toast.error("Registration Failed", {
+            position: "top-center"
+        })
+
+    }
+    const notify3 = () => {
+        toast.success("Account Created Successfully", {
+            position: "top-center"
+        })
+
+    }
 
 
 
@@ -25,6 +38,7 @@ const Register = () => {
         const password = e.target.password.value;
 
         const userInfo = { displayName, photoURL, email, password }
+
         const validate = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
         if (!validate.test(password)) {
             setError(`Must have an Uppercase, a Lowercase letter in the password and Length must be at least 6 character`);
@@ -43,9 +57,7 @@ const Register = () => {
                 )
                     .then(res => res.json())
                     .then(data => {
-                        if (data.insertedId) {
-                            alert('User Created Successfully')
-                        }
+
                         fetch(`http://localhost:5000/users/${email}`)
                             .then(res => res.json())
                             .then(data => {
@@ -55,13 +67,18 @@ const Register = () => {
                                     .then(() => { })
                                     .catch(err => { })
                             })
-                    })
 
-                navigate('/')
+
+                    })
+                notify3()
+                setTimeout(() => {
+                    navigate('/')
+                }, 2000)
 
             })
             .catch(err => {
                 setError(err.message)
+                notify()
             })
     }
 
@@ -72,7 +89,7 @@ const Register = () => {
                 navigate('/')
             })
             .catch(err => {
-
+                notify()
             })
     }
 
@@ -154,7 +171,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
