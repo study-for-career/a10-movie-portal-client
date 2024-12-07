@@ -16,6 +16,7 @@ import Movies from './pages/Movies.jsx';
 import PublicRout from './routes/PublicRout.jsx';
 import PrivateRoute from './routes/PrivateRoute';
 import MovieDetails from './private pages/movieDetails.jsx';
+import Pricing from './pages/Pricing.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'movies',
         element: <Movies></Movies>
+      },
+      {
+        path: 'pricing',
+        element: <Pricing></Pricing>
       }
     ]
   },
