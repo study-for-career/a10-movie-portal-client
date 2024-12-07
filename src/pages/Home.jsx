@@ -1,4 +1,5 @@
 import Slider from "../components/Slider";
+import Watching from "../components/Watching";
 
 const Home = () => {
 
@@ -6,7 +7,7 @@ const Home = () => {
     <div>
 
       <Slider></Slider>
-
+      <Watching></Watching>
 
     </div>
   );

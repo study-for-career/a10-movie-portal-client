@@ -87,8 +87,10 @@ const MovieDetails = () => {
                     </h2>
                     <h2><span className=" text-xl text-pink-500">Genre: </span >{genre.join(',  ')}</h2>
                     <p><span className=" text-xl text-pink-500">Summary: </span >{summary}</p>
+                    <div className="text-center py-3">
                     <button onClick={() => handleAddToFavourite(favouriteMovieData)} className="btn bg-pink-500 text-white hover:bg-gray-800 mr-3"> Add to Favourite</button>
                     <button onClick={() => handleDeleteMovie(_id)} className="btn btn-error"> Delete Movie</button>
+                    </div>
                 </div>
                 <div className="h-60 order-1 md:order-2">
                     <img
