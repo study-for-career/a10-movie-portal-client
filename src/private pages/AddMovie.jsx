@@ -163,6 +163,10 @@ const AddMovie = () => {
                             <option>2019</option>
                             <option>2018</option>
                             <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
 
                         </select>
                     </div>
