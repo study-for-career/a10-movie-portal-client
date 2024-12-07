@@ -52,6 +52,8 @@ const MovieDetails = () => {
                     notify()
                 }
             })
+
+
     }
 
     const navigate = useNavigate()
@@ -78,6 +80,13 @@ const MovieDetails = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-2 py-5 md:p-10">
                 <div className="space-y-3 order-2 md:order-1">
                     <h1 className="text-4xl lg:text-6xl font-bold text-pink-500">{title}</h1>
+
+
+                    <button onClick={() => handleAddToFavourite(favouriteMovieData)} className="btn bg-pink-500 text-white hover:bg-gray-800"> Add to Favourite</button>
+                    <Link to={`/update/${_id}`}> <button className="btn bg-pink-500 text-white hover:bg-gray-800"> Update Movie</button></Link>
+
+
+
                     <h2><span className=" text-xl text-pink-500">Release Year: </span >{release}</h2>
                     <h2><span className=" text-xl text-pink-500">Movie Length: </span >{duration} min</h2>
                     <h2 className="flex items-center ">
@@ -87,12 +96,12 @@ const MovieDetails = () => {
                     </h2>
                     <h2><span className=" text-xl text-pink-500">Genre: </span >{genre.join(',  ')}</h2>
                     <p><span className=" text-xl text-pink-500">Summary: </span >{summary}</p>
-                    <div className="text-center py-3">
-                    <button onClick={() => handleAddToFavourite(favouriteMovieData)} className="btn bg-pink-500 text-white hover:bg-gray-800 mr-3"> Add to Favourite</button>
-                    <button onClick={() => handleDeleteMovie(_id)} className="btn btn-error"> Delete Movie</button>
+                    <div className="text-center">
+
+                        <button onClick={() => handleDeleteMovie(_id)} className="btn btn-error w-full"> Delete Movie</button>
                     </div>
                 </div>
-                <div className="h-60 order-1 md:order-2">
+                <div className="order-1 md:order-2">
                     <img
                         className="rounded-lg h-60 lg:h-96 w-full"
                         src={image} alt={title} />

@@ -1,6 +1,6 @@
 import MovieTable from "../components/MovieTable";
 import Slider from "../components/Slider";
-import FeaturedMovie from "../components/FeaturedMovie";
+import FeaturedMovies from "../components/FeaturedMovies";
 import YouMayLike from "../components/YouMayLike";
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
     <div>
 
       <Slider></Slider>
-      <FeaturedMovie></FeaturedMovie>
+      <FeaturedMovies></FeaturedMovies>
       <YouMayLike></YouMayLike>
       <MovieTable></MovieTable>
 
