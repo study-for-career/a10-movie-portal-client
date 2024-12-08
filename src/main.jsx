@@ -62,12 +62,12 @@ const router = createBrowserRouter([
       {
         path: 'movies/:id',
         element: <MovieDetails></MovieDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-portal-server-seven.vercel.app/movies/${params.id}`)
       },
       {
         path: 'update/:id',
         element: <UpdateMovie></UpdateMovie>,
-        loader: ({ params }) => fetch(`http://localhost:5000/movies/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-portal-server-seven.vercel.app/movies/${params.id}`)
       }
     ]
   },

@@ -100,7 +100,7 @@ const UpdateMovie = () => {
 
         const movieDetails = { email, title, duration, release, image, summary, rating, genre }
 
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`https://movie-portal-server-seven.vercel.app/update/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

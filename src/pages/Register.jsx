@@ -47,7 +47,7 @@ const Register = () => {
 
         createUser(email, password)
             .then(() => {
-                fetch('http://localhost:5000/users', {
+                fetch('https://movie-portal-server-seven.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -58,7 +58,7 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
 
-                        fetch(`http://localhost:5000/users/${email}`)
+                        fetch(`https://movie-portal-server-seven.vercel.app/users/${email}`)
                             .then(res => res.json())
                             .then(data => {
                                 const { displayName, photoURL } = data

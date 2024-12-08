@@ -37,7 +37,7 @@ const MovieDetails = () => {
     const favouriteMovieData = { email, title, duration, release, image, summary, rating, genre }
 
     const handleAddToFavourite = (favouriteMovie) => {
-        fetch('http://localhost:5000/favourite_movies', {
+        fetch('https://movie-portal-server-seven.vercel.app/favourite_movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -59,7 +59,7 @@ const MovieDetails = () => {
     const navigate = useNavigate()
     const handleDeleteMovie = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/movies/${id}`, {
+        fetch(`https://movie-portal-server-seven.vercel.app/movies/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

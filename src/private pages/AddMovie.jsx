@@ -92,7 +92,7 @@ const AddMovie = () => {
 
         const movieDetails = { email, title, duration, release, image, summary, rating, genre }
 
-        fetch('http://localhost:5000/movies', {
+        fetch('https://movie-portal-server-seven.vercel.app/movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

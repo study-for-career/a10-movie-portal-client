@@ -19,7 +19,7 @@ const Favourites = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/favourite_movies/${user.email}`)
+        fetch(`https://movie-portal-server-seven.vercel.app/favourite_movies/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setFavouriteMovie(data)
@@ -29,7 +29,7 @@ const Favourites = () => {
     // Delete Favourite Movie
     const handleDeleteFavourite = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/favourite_movies/${id}`, {
+        fetch(`https://movie-portal-server-seven.vercel.app/favourite_movies/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
