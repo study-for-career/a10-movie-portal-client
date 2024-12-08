@@ -31,7 +31,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'movies',
-        element: <Movies></Movies>
+        element: <Movies></Movies>,
+        loader: () => fetch('https://movie-portal-server-seven.vercel.app/movies')
       },
       {
         path: 'pricing',
