@@ -8,3 +8,7 @@
 .active {
     color: pink
 }
+
+[data-theme="dark"] {
+    background-color: black;
+}

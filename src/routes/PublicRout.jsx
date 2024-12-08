@@ -7,15 +7,14 @@ import { AuthContext } from "../private pages/AuthProvider";
 
 
 const PublicRout = () => {
-
-    const { loader } = useContext(AuthContext)
+    const { loader, theme } = useContext(AuthContext)
 
     if (loader) {
         return <Loader></Loader>
     }
 
     return (
-        <div>
+        <div data-theme={theme}>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

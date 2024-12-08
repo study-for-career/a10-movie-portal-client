@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
-const Movies = () => {
 
+const Movies = () => {
 
     const movies = useLoaderData()
 

@@ -7,13 +7,13 @@ import Loader from "../components/Loader";
 import { AuthContext } from "../private pages/AuthProvider";
 
 const PrivateRoute = () => {
-    const { user, loader } = useContext(AuthContext)
+    const { user, loader, theme } = useContext(AuthContext)
     if (loader) {
         return <Loader></Loader>
     }
 
     return (
-        <div>
+        <div data-theme={theme}>
             <Navbar></Navbar>
             {
                 user ? <Outlet></Outlet> : <NotLogged></NotLogged>

@@ -5,7 +5,15 @@ import { AuthContext } from "../private pages/AuthProvider";
 
 const Navbar = () => {
 
-    const { logoutUser, user } = useContext(AuthContext)
+    const { logoutUser, user, setTheme, theme } = useContext(AuthContext)
+
+    const handleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark')
+        } else {
+            setTheme('light')
+        }
+    }
 
     const menuLists = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -13,6 +21,7 @@ const Navbar = () => {
         <li><NavLink to='/pricing'>Pricing</NavLink></li>
         <li><NavLink to='/favourite_movies'>My Favourites</NavLink></li>
         <li><NavLink to='/add-movie'>Add Movie</NavLink></li>
+        <input type="checkbox" onClick={handleTheme} value="synthwave" className="toggle theme-controller" />
 
 
     </>
@@ -44,6 +53,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
                 <div className="block lg:hidden">
                     <ul className="flex gap-4">
+                        <input type="checkbox" onClick={handleTheme} value="synthwave" className="toggle theme-controller" />
                         <li><NavLink to='/'>Home</NavLink></li>
                         <li className={user ? 'hidden' : 'block'}><NavLink to='/login'>Login</NavLink></li>
                     </ul>

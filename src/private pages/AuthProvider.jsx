@@ -52,8 +52,9 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    // Theme Controller
 
-
+    const [theme, setTheme] = useState('dark')
 
     const info = {
         createUser,
@@ -64,7 +65,8 @@ const AuthProvider = ({ children }) => {
         setUser,
         loader,
         updateUser,
-
+        theme,
+        setTheme
     }
 
     return (
